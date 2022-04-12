@@ -134,8 +134,8 @@ export default {
       rule:[
         val => (val && val.length > 0) || 'Porfavor ingresar dato'
       ],
-      email:'admin@test.com ',
-      password:'G4M02021#',
+      email:'',
+      password:'',
       tab:'login',
       user:{},
       isPwd:true,
