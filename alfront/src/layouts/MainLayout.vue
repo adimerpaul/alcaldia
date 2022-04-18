@@ -54,6 +54,15 @@
             <q-item-label caption>Mercado cambios</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="buscararchivo" exact v-if="this.$store.state.login.boolbuscararchivos">
+          <q-item-section avatar>
+            <q-icon name="document_scanner" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Buscar archivo </q-item-label>
+            <q-item-label caption>Buscar archivo</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item v-if="$store.getters['login/isLoggedIn']" clickable @click="logout">
           <q-item-section avatar>
             <q-icon name="logout" />

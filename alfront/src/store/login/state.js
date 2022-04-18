@@ -5,6 +5,7 @@ export default function () {
     user : {},
     // pedido:[],
     boolmercadocambioactividad:false,
+    boolbuscararchivos:false,
     // boolusuarios:false,
     // booltramite:false,
     // booljuridico:false,

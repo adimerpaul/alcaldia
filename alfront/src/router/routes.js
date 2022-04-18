@@ -1,5 +1,6 @@
 import Login from "pages/Login";
 import Mercadocambionombre from "pages/Mercadocambionombre";
+import Buscararchivo from "pages/Buscararchivo";
 
 const routes = [
   {
@@ -9,6 +10,7 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'login', component: Login },
       { path: 'mercadocambionombre', component: Mercadocambionombre },
+      { path: 'buscararchivo', component: Buscararchivo },
     ]
   },
 

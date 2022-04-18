@@ -351,14 +351,14 @@ export default {
             y+=0.4
             con++
             doc.text(1, y+3, r.fecha.substring(0,10))
-            doc.text(3.5, y+3, r.padron)
-            doc.text(5.5, y+3, r.largo+'x'+r.ancho)
+            doc.text(3.5, y+3, r.padron==null?'':r.padron)
+            doc.text(5.5, y+3, r.largo==null?'':r.largo+'x'+r.ancho==null?'':r.ancho)
             doc.text(7.5, y+3, (r.paterno==null?'':r.paterno).substring(0,15)+' '+(r.materno==null?'':r.materno).substring(0,15)+' '+(r.nombre==null?'':r.nombre).substring(0,15))
             doc.text(13.5, y+3, r.carnet==null?'':r.carnet)
             doc.text(16, y+3, r.tipo)
             // sumtotal+=parseInt(r.total)
             // console.log(r.total)
-            doc.text(19.5, y+3, r.oper )
+            doc.text(19.5, y+3, r.oper==null?'':r.oper )
             if (con==55){
               con=0
               doc.addPage();

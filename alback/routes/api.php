@@ -28,5 +28,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/form_acti',\App\Http\Controllers\Form_actiController::class);
     Route::resource('/form_pue',\App\Http\Controllers\Form_pueController::class);
     Route::resource('/form_cambios',\App\Http\Controllers\Form_cambiosController::class);
+    Route::resource('/lidgic',\App\Http\Controllers\Lidgic::class);
+    Route::resource('/lidgme',\App\Http\Controllers\Lidgme::class);
 
 });
