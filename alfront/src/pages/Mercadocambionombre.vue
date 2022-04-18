@@ -347,6 +347,7 @@ export default {
         let sumtotal=0
         let con=0
         this.miscambiostotales.forEach(r=>{
+          console.log(r)
           // if (r.nrocomprobante!=''){
             y+=0.4
             con++
@@ -355,9 +356,9 @@ export default {
             doc.text(5.5, y+3, r.largo==null?'':r.largo+'x'+r.ancho==null?'':r.ancho)
             doc.text(7.5, y+3, (r.paterno==null?'':r.paterno).substring(0,15)+' '+(r.materno==null?'':r.materno).substring(0,15)+' '+(r.nombre==null?'':r.nombre).substring(0,15))
             doc.text(13.5, y+3, r.carnet==null?'':r.carnet)
-            doc.text(16, y+3, r.tipo)
-            // sumtotal+=parseInt(r.total)
-            // console.log(r.total)
+            doc.text(16, y+3, r.tipo==null?'':r.tipo)
+            sumtotal+=parseInt(r.total)
+            console.log(r.total)
             doc.text(19.5, y+3, r.oper==null?'':r.oper )
             if (con==55){
               con=0
