@@ -37,11 +37,12 @@ class Form_cambiosController extends Controller
     {
 //        return $request;
         DB::connection('merc20xx')->table('formales')
-            ->where("padron",$request->padron)
+            ->where("id",$request->id)
             ->update([
             "pad1"=>$request->pad1==null?'':$request->pad1,
             "pad2"=>$request->pad2==null?'':$request->pad2,
             "pad3"=>$request->pad3==null?'':$request->pad3,
+            "padron"=>$request->pad1.$request->pad2.$request->pad3,
             "paterno"=>$request->paterno==null?'':$request->paterno,
             "materno"=>$request->materno==null?'':$request->materno,
             "ap_esposo"=>$request->ap_esposo==null?'':$request->ap_esposo,
