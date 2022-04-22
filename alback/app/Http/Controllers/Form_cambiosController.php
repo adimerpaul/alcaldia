@@ -58,7 +58,7 @@ class Form_cambiosController extends Controller
             "ancho"=>$request->ancho==null?'':$request->ancho,
             "largo"=>$request->largo==null?'':$request->largo,
             "observ"=>$request->observ==null?'':$request->observ,
-            "padant"=>$request->padant==null?'':$request->padant,
+            "padant"=>$request->padron==null?'':$request->padron,
         ]);
         DB::connection('merc20xx')->table('form_cambios')->insert([
             "form23"=>$request->form23==null?'':$request->form23,
