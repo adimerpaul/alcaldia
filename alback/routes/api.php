@@ -35,5 +35,8 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/lidgme',\App\Http\Controllers\Lidgme::class);
     Route::resource('/archivo',\App\Http\Controllers\ArchivoController::class);
     Route::resource('/consultarecaudado ',\App\Http\Controllers\ConsultarecaudadoController::class);
+    Route::resource('/pm01inmu',\App\Http\Controllers\Pm01inmuController::class);
+    Route::resource('/pm01cont',\App\Http\Controllers\Pm01icontController::class);
+    Route::resource('/mercado',\App\Http\Controllers\MercadoController::class);
 
 });

@@ -52,20 +52,48 @@ class ArchivoController extends Controller
         if ($query->count()>0){
 //            return $query->first();
             $q=$query->first();
-            $nombre=$q->paterno.' '.$q->materno.' '.$q->nombre.' <br><b>Direc:</b>'.$q->ndireccion.'<span class=" badge badge-success">Natural</span>';
+            $nombre=TRIM($q->paterno).' '.TRIM($q->materno).' '.TRIM($q->nombre).' Direc:'.TRIM($q->ndireccion).' Natural';
             $re['nombre']=$nombre;
             $re['tipo']='natur';
             $re['gest']=$q->gest;
+
+            $year = strtotime("1995-01-01");
+            $end = strtotime(date('Y-m-d', strtotime("-1 year")));
+            $lidgme=array();
+            while($year <= $end)
+            {
+//            $query=DB::connection('bases')->table('lidgic'.date('y', $year))->where('padron','like','%'.$padron.'%');
+                $query=DB::connection('bases')->table('lidgic'.date('y', $year))->where('padron',$padron);
+                if ($query->count()>0){
+                    array_push($lidgme,$query->first());
+                }
+                $year = strtotime("+1 year", $year);
+            }
+            $re['pagos']=$lidgme;
+
             return $re;
 //            $q=DB::table('pmjucont')->where('comun',$comun)->first();
 //            return $q->paterno.' '.$q->materno.' '.$q->nombre.' <span class="badge badge-warning">J</span>';
         }else{
             $q=DB::connection('indcom')->table('jurid')->where('jpadron',$padron)->get()->first();
-            $nombre=$q->razon.' <br><b>Direc:</b>'.$q->jdireccion.' <br><b>Repre:</b>'.$q->nomreplega.'<span class=" badge badge-warning">Juridico</span>';
+            $nombre=TRIM($q->razon).' Direc:'.TRIM($q->jdireccion).' Repre:'.TRIM($q->nomreplega).' Juridico';
 //            $nombre=$q->paterno.' '.$q->materno.' '.$q->nombre.' '.$q->ndireccion.'<span class=" badge badge-success">Natural</span>';
             $re['nombre']=$nombre;
             $re['tipo']='jurid';
             $re['gest']=$q->gest;
+            $lidgme=array();
+            $year = strtotime("1995-01-01");
+            $end = strtotime(date('Y-m-d', strtotime("-1 year")));
+            while($year <= $end)
+            {
+//            $query=DB::connection('bases')->table('lidgic'.date('y', $year))->where('padron','like','%'.$padron.'%');
+                $query=DB::connection('bases')->table('lidgic'.date('y', $year))->where('padron',$padron);
+                if ($query->count()>0){
+                    array_push($lidgme,$query->first());
+                }
+                $year = strtotime("+1 year", $year);
+            }
+            $re['pagos']=$lidgme;
             return $re;
 //            $q = DB::table('pm01cont')->where('comun',$comun)->first();
 //            return $q->paterno.' '.$q->materno.' '.$q->nombre.' <span class="badge badge-success">N</span>';
