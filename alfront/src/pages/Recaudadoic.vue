@@ -1,36 +1,36 @@
 <template>
-<q-page>
-  <div class="row">
-    <div class="col-12">
-      <q-form @submit="consulta">
-        <div class="row">
-          <div class="col-4">
-            <q-input dense outlined type="date" v-model="fecha1" label="fecha1" />
+  <q-page>
+    <div class="row">
+      <div class="col-12">
+        <q-form @submit="consulta">
+          <div class="row">
+            <div class="col-4">
+              <q-input dense outlined type="date" v-model="fecha1" label="fecha1" />
+            </div>
+            <div class="col-4">
+              <q-input dense outlined type="date" v-model="fecha2" label="fecha2" />
+            </div>
+            <div class="col-4 flex flex-center">
+              <q-btn type="submit" class="full-width" icon="search" color="info" label="consultar" />
+            </div>
           </div>
-          <div class="col-4">
-            <q-input dense outlined type="date" v-model="fecha2" label="fecha2" />
-          </div>
-          <div class="col-4 flex flex-center">
-            <q-btn type="submit" class="full-width" icon="search" color="info" label="consultar" />
-          </div>
-        </div>
-      </q-form>
+        </q-form>
+      </div>
+      <div class="col-12">
+        <q-table title="consulta" :rows="datos" :columns="columns">
+          <template v-slot:top-right>
+            <q-btn
+              color="primary"
+              icon-right="archive"
+              label="Exportar csv"
+              no-caps
+              @click="exportTable"
+            />
+          </template>
+        </q-table>
+      </div>
     </div>
-    <div class="col-12">
-      <q-table title="consulta" :rows="datos" :columns="columns">
-        <template v-slot:top-right>
-          <q-btn
-            color="primary"
-            icon-right="archive"
-            label="Exportar csv"
-            no-caps
-            @click="exportTable"
-          />
-        </template>
-      </q-table>
-    </div>
-  </div>
-</q-page>
+  </q-page>
 </template>
 
 <script>
@@ -62,11 +62,11 @@ export default {
       fecha2:date.formatDate(new Date(),'YYYY-MM-DD'),
       datos:[],
       columns:[
-        {label:'ci',name:'comun',field:'comun'},
-        {label:'inmueble',name:'cantidad',field:'cantidad'},
-        {label:'gestion',name:'gest',field:'gest'},
-        {label:'fecha',name:'fecha',field:'fecha'},
-        {label:'monto',name:'Pagado',field:'Pagado'},
+        {label:'padron',name:'padron',field:'padron'},
+        {label:'control',name:'control',field:'control'},
+        {label:'gestion',name:'gestion',field:'gestion'},
+        {label:'fecha',name:'fech_pago',field:'fech_pago'},
+        {label:'monto',name:'imp_pagar',field:'imp_pagar'},
       ]
     }
   },
@@ -77,7 +77,7 @@ export default {
     consulta(){
       this.$q.loading.show()
       this.$api.post('consultarecaudado',{
-        tipo:'TASAS',
+        tipo:'IC',
         inicio:this.fecha1,
         fin:this.fecha2,
       }).then(res=>{

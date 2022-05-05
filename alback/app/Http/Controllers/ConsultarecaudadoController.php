@@ -97,6 +97,125 @@ SELECT comun,cantidad ,gest,fecha,Pagado FROM tasas20xx.archi20 a WHERE date(fec
 UNION
 SELECT comun,cantidad ,gest,fecha,Pagado FROM tasas20xx.archi21 a WHERE date(fecha)>='".$request->inicio."' AND date(fecha)<='".$request->fin."'
             ");
+        }elseif ($request->tipo=='IC'){
+            return DB::select("
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic95 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic96 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic97 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic98 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic99 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic00 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic01 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic02 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic03 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic04 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic05 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic06 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic07 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic08 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic09 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic10 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic11 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic12 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic13 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic14 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic15 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic16 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic17 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic18 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic19 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic20 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgic21 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+
+            ");
+        }elseif ($request->tipo=='MERCADOS'){
+            return DB::select("
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme92 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme93 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme94 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme95 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme96 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme97 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme98 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme99 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme00 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme01 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme02 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme03 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme04 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme05 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme06 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme07 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme08 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme09 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme10 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme11 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme12 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme13 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme14 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme15 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme16 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme17 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme18 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme19 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme20 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+UNION
+SELECT padron,control ,gestion,fech_pago,imp_pagar FROM bases.lidgme21 WHERE date(fech_pago)>='".$request->inicio."' AND date(fech_pago)<='".$request->fin."'
+");
         }
     }
 

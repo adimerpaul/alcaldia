@@ -72,6 +72,24 @@
             <q-item-label caption>Recaudado tasas</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="recaudadoic" exact v-if="this.$store.state.login.boolconsultarecaudado">
+          <q-item-section avatar>
+            <q-icon name="paid" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Recaudado ind com </q-item-label>
+            <q-item-label caption>Recaudado ind com</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="recaudadomercado" exact v-if="this.$store.state.login.boolconsultarecaudado">
+          <q-item-section avatar>
+            <q-icon name="paid" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Recaudado mercado </q-item-label>
+            <q-item-label caption>Recaudado mercado</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item v-if="$store.getters['login/isLoggedIn']" clickable @click="logout">
           <q-item-section avatar>
             <q-icon name="logout" />
