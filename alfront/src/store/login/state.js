@@ -6,6 +6,7 @@ export default function () {
     // pedido:[],
     boolmercadocambioactividad:false,
     boolbuscararchivos:false,
+    boolconsultarecaudado:false,
     // boolusuarios:false,
     // booltramite:false,
     // booljuridico:false,

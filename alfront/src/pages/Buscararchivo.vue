@@ -2,12 +2,14 @@
 <q-page class="q-pa-xs">
 <div class="row">
   <div class="col-12">
-    <q-form>
+    <q-form @submit="consulta">
       <div class="row">
-        <div class="col-6">
-          <q-input dense outlined label="padron industria comercio" />
+        <div class="col-3">
+          <q-input dense outlined label="Ingresar padron" v-model="padron" />
         </div>
-        <div class="col-6"></div>
+        <div class="col-3 flex flex-center">
+          <q-btn type="submit" class="full-width" label="Consultar" color="positive" icon="search" />
+        </div>
       </div>
     </q-form>
   </div>
@@ -21,15 +23,31 @@ export default {
   name: "Buscararchivo",
   data(){
     return{
-      padron:'1-11-37438'
+      padron:'1-11-38209',
+      gest:'',
+      nombre:'',
+      tipo:'',
     }
   },
   created() {
-    this.$api.get('lidgic/'+this.padron).then(res=>{
-      console.log(res.data)
-    })
+    this.consulta()
+  },
+  methods:{
+    consulta(){
+      this.$q.loading.show()
+      this.$api.get('archivo/'+this.padron).then(res=>{
+        console.log(res.data)
+        this.$q.loading.hide()
+      }).catch(err=>{
+        this.$q.loading.hide()
+        this.$q.notify({
+          message:err.response.data.message,
+          color:'red',
+          icon:'error',
+        })
+      })
+    }
   }
-
 }
 </script>
 

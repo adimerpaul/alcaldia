@@ -63,6 +63,15 @@
             <q-item-label caption>Buscar archivo</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="recaudadotasas" exact v-if="this.$store.state.login.boolconsultarecaudado">
+          <q-item-section avatar>
+            <q-icon name="paid" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Recaudado tasas </q-item-label>
+            <q-item-label caption>Recaudado tasas</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item v-if="$store.getters['login/isLoggedIn']" clickable @click="logout">
           <q-item-section avatar>
             <q-icon name="logout" />

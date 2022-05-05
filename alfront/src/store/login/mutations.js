@@ -12,6 +12,7 @@ export function auth_success(state, data){
 
   state.boolmercadocambioactividad=data.user.permisos.find(p=>p.id===1)!=undefined
   state.boolbuscararchivos=data.user.permisos.find(p=>p.id===2)!=undefined
+  state.boolconsultarecaudado=data.user.permisos.find(p=>p.id===3)!=undefined
   // console.log(state.boolmercadocambioactividad)
   // state.boolusuarios=data.user.permisos.find(p=>p.id===2)!=undefined
   // state.booltramite=data.user.permisos.find(p=>p.id===3)!=undefined
@@ -40,6 +41,7 @@ export function salir(state){
   state.token = ''
   state.boolmercadocambioactividad=false
   state.boolbuscararchivos=false
+  state.boolconsultarecaudado=false
   // state.boolusuarios=false
   // state.booltramite=false
   // state.booljuridico=false

@@ -33,5 +33,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/form_cambios',\App\Http\Controllers\Form_cambiosController::class);
     Route::resource('/lidgic',\App\Http\Controllers\Lidgic::class);
     Route::resource('/lidgme',\App\Http\Controllers\Lidgme::class);
+    Route::resource('/archivo',\App\Http\Controllers\ArchivoController::class);
+    Route::resource('/consultarecaudado ',\App\Http\Controllers\ConsultarecaudadoController::class);
 
 });
