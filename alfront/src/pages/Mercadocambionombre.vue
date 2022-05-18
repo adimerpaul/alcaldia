@@ -316,7 +316,7 @@
     <q-card >
       <q-form @submit.prevent="updateeventualesdimencion">
         <q-card-section>
-          <div class="text-h6">Cambio de actividad eventual</div>
+          <div class="text-h6">Cambio de dimension eventual</div>
         </q-card-section>
         <q-card-section class="q-pt-none">
           <div class="row">
@@ -474,7 +474,7 @@
     <q-card >
       <q-form @submit.prevent="updateeventualesnombre">
         <q-card-section>
-          <div class="text-h6">Cambio de actividad eventual</div>
+          <div class="text-h6">Cambio de nombre eventual</div>
         </q-card-section>
         <q-card-section class="q-pt-none">
           <div class="row">
