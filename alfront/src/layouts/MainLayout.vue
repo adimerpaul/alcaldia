@@ -54,6 +54,15 @@
             <q-item-label caption>Mercado cambios</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="targetaunica" exact v-if="this.$store.state.login.boolmercadocambioactividad">
+          <q-item-section avatar>
+            <q-icon name="credit_score" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Targeta unica </q-item-label>
+            <q-item-label caption>Targeta unica</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item to="buscararchivo" exact v-if="this.$store.state.login.boolbuscararchivos">
           <q-item-section avatar>
             <q-icon name="document_scanner" />

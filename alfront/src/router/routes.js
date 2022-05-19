@@ -4,6 +4,7 @@ import Buscararchivo from "pages/Buscararchivo";
 import Recaudadotasas from "pages/Recaudadotasas";
 import Recaudadoic from "pages/Recaudadoic";
 import Recaudadomercado from "pages/Recaudadomercado";
+import Targetaunica from "pages/Targetaunica";
 
 const routes = [
   {
@@ -17,6 +18,7 @@ const routes = [
       { path: 'recaudadotasas', component: Recaudadotasas,meta: {requiresAuth: true} },
       { path: 'recaudadoic', component: Recaudadoic,meta: {requiresAuth: true} },
       { path: 'recaudadomercado', component: Recaudadomercado,meta: {requiresAuth: true} },
+      { path: 'targetaunica', component: Targetaunica,meta: {requiresAuth: true} },
     ]
   },
 

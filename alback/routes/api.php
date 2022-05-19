@@ -22,6 +22,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/me',[\App\Http\Controllers\UserController::class,'me']);
     Route::post('/logout',[\App\Http\Controllers\UserController::class,'logout']);
     Route::resource('/mercadocne',\App\Http\Controllers\MercadoCNEcontroller::class);
+    Route::resource('/targetaunica',\App\Http\Controllers\TargetaunicaController::class);
     Route::resource('/mercadocnf',\App\Http\Controllers\MercadoCNFcontroller::class);
     Route::resource('/formmerc',\App\Http\Controllers\FormmercController::class);
     Route::resource('/activida',\App\Http\Controllers\ActividaController::class);
