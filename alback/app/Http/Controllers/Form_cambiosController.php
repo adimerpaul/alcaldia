@@ -80,7 +80,7 @@ class Form_cambiosController extends Controller
             "fono"=>$request->fono==null?'':$request->fono,
             "domicilio"=>$request->domicilio==null?'':$request->domicilio,
             "ruc"=>$request->ruc==null?'':$request->ruc,
-            "fecha_inic"=>$request->fecha_inic==null?'':$request->fecha_inic,
+            "fecha_inic"=>$request->fecha_inic==null?null:$request->fecha_inic,
             "gest"=>$request->gest==null?'':$request->gest,
             "codigo"=>$request->codigo==null?'':$request->codigo,
             "tipo_pues"=>$request->tipo_pues==null?'':$request->tipo_pues,
