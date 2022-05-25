@@ -31,7 +31,10 @@
             <q-select disable dense outlined label="Mercado" :options="formmerc" v-model="formal.formmerc" />
           </div>
           <div class="col-3">
-            <q-input outlined dense disable v-model="formal.gest" label="gestion"/>
+            <q-badge   :class="disablebtn?'full-width full-height bg-red text-white':'full-width full-height bg-green text-white'" >
+              Ultima gestion pagada <br> {{ formal.gest }}
+            </q-badge>
+<!--            <q-input outlined dense  v-model="formal.gest" label="Ultima gestion pagada" bg-color="green" label-color="white" color="white" style="color: white"/>-->
           </div>
           <div class="col-4">
             <q-select disable dense outlined label="Actividad" :options="form_acti" v-model="formal.form_acti" />
@@ -55,7 +58,7 @@
             <q-input disable dense outlined label="Numero preimpreso"  v-model="formal.n_pretuc" />
           </div>
           <div class="col-4 flex flex-center">
-            <q-btn label="Habilitar targeta" :disable="disablebtn" color="positive" class="full-width"  icon="credit_score" @click="habilitartargeta()" />
+            <q-btn label="Habilitar targeta" :disable="disablebtn" :color="disablebtn?'negative':'positive'" class="full-width"  icon="credit_score" @click="habilitartargeta()" />
           </div>
 <!--          <div class="col-12">-->
 <!--            <pre>{{formal}}</pre>-->
@@ -111,7 +114,10 @@
             <!--              <pre>{{even_acti}}</pre>-->
             <!--            </div>-->
             <div class="col-4">
-              <q-input dense outlined :disable="true"  label="gest"  v-model="eventual.gest"/>
+              <q-badge   :class="disablebtne?'full-width full-height bg-red text-white':'full-width full-height bg-green text-white'" >
+                Ultima gestion pagada <br> {{ eventual.gest }}
+              </q-badge>
+<!--              <q-input dense outlined :disable="true"  label="gest"  v-model="eventual.gest"/>-->
             </div>
             <div class="col-4">
               <q-select disable dense outlined label="Dias" :options="even_dias" v-model="eventual.even_dias" />
@@ -136,7 +142,7 @@
               <q-input disable dense outlined label="Numero preimpreso"  v-model="eventual.n_pretuc" />
             </div>
             <div class="col-4 flex flex-center">
-              <q-btn label="Habilitar targeta" :disable="disablebtne" color="positive" class="full-width"  icon="credit_score" @click="habilitartargetae()" />
+              <q-btn label="Habilitar targeta" :disable="disablebtne" :color="disablebtne?'negative':'positive'" class="full-width"  icon="credit_score" @click="habilitartargetae()" />
             </div>
           </div>
         </q-card-section>

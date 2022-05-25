@@ -5,6 +5,7 @@ import Recaudadotasas from "pages/Recaudadotasas";
 import Recaudadoic from "pages/Recaudadoic";
 import Recaudadomercado from "pages/Recaudadomercado";
 import Targetaunica from "pages/Targetaunica";
+import Bajamercados from "pages/Bajamercados";
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
       { path: 'recaudadoic', component: Recaudadoic,meta: {requiresAuth: true} },
       { path: 'recaudadomercado', component: Recaudadomercado,meta: {requiresAuth: true} },
       { path: 'targetaunica', component: Targetaunica,meta: {requiresAuth: true} },
+      { path: 'bajamercados', component: Bajamercados,meta: {requiresAuth: true} },
     ]
   },
 

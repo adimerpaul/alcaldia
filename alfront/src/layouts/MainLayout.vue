@@ -63,6 +63,15 @@
             <q-item-label caption>Targeta unica</q-item-label>
           </q-item-section>
         </q-item>
+<!--        <q-item to="bajamercados" exact v-if="this.$store.state.login.boolmercadocambioactividad">-->
+<!--          <q-item-section avatar>-->
+<!--            <q-icon name="arrow_circle_down" />-->
+<!--          </q-item-section>-->
+<!--          <q-item-section>-->
+<!--            <q-item-label>Bajas mercados </q-item-label>-->
+<!--            <q-item-label caption>Bajas mercados</q-item-label>-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
         <q-item to="buscararchivo" exact v-if="this.$store.state.login.boolbuscararchivos">
           <q-item-section avatar>
             <q-icon name="document_scanner" />
