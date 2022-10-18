@@ -12,6 +12,7 @@
             <div class=" col-3 flex flex-center"><q-btn @click="dialogactividad=true" color="primary" icon="local_activity"  label="Cambio actividad" /></div>
             <div class=" col-3 flex flex-center"><q-btn @click="dialogdimension=true" color="secondary" icon="lens_blur"  label="Cambio dimension" /></div>
             <div class=" col-3 flex flex-center"><q-btn @click="dialognombre=true" color="info" icon="drive_file_rename_outline"  label="Cambio nombre" /></div>
+            <div class=" col-2 flex flex-center"><q-btn @click="dialogbajaformal=true" color="negative" icon="person_remove"  label="DAR DE BAJA" /></div>
             <div class=" col-3 flex flex-center"><q-btn  color="accent" icon="construction"  label="consultar tramite" /></div>
           </div>
         </q-card-actions>
@@ -39,6 +40,7 @@
             <div class=" col-2 flex flex-center"><q-btn @click="dialogdireccione=true" color="accent" icon="home"  label="Cambio direccion" /></div>
             <div class=" col-2 flex flex-center"><q-btn @click="dialogdimensione=true" color="secondary" icon="lens_blur"  label="Cambio dimension" /></div>
             <div class=" col-2 flex flex-center"><q-btn @click="dialognombree=true" color="info" icon="drive_file_rename_outline"  label="Cambio nombre" /></div>
+            <div class=" col-2 flex flex-center"><q-btn @click="dialogbajaeventual=true" color="negative" icon="person_remove"  label="DAR DE BAJA" /></div>
             <div class=" col-2 flex flex-center"><q-btn @click="dialodiae=true" color="primary" icon="edit"  label="Cambio de dia" /></div>
             <div class=" col-2 flex flex-center"><q-btn  color="accent" icon="construction"  label="consultar tramite" /></div>
           </div>
@@ -554,6 +556,171 @@
       </q-form>
     </q-card>
   </q-dialog>
+
+
+  <q-dialog full-width v-model="dialogbajaformal">
+    <q-card >
+      <q-form @submit.prevent="bajaformal">
+        <q-card-section>
+          <div class="text-h6">Dar de baja a formal</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <div class="row">
+            <div class="col-6">
+              <q-select dense outlined label="formal" use-input :options="formales" @filter="filterFnf" v-model="formal" />
+            </div>
+            <div class="col-2">
+              <q-input dense outlined :disable="true" label="pad ant" v-model="formal.padant"/>
+            </div>
+            <div class="col-2">
+              <q-input required dense outlined label="FORM 23" v-model="form23" />
+            </div>
+            <div class="col-2">
+              <q-input required dense outlined label="COMPROBANTE" v-model="compr" />
+            </div>
+            <div class="col-2">
+              <q-input dense outlined   label="paterno"  v-model="formal.paterno"/>
+            </div>
+            <div class="col-2">
+              <q-input dense outlined   label="materno"  v-model="formal.materno"/>
+            </div>
+            <div class="col-3">
+              <q-input dense outlined   label="nombres"  v-model="formal.nombres"/>
+            </div>
+            <div class="col-2">
+              <q-input dense outlined   label="ap_esposo"  v-model="formal.ap_esposo"/>
+            </div>
+            <div class="col-3">
+              <q-input dense outlined   label="carnet"  v-model="formal.carnet"/>
+            </div>
+            <div class="col-6">
+              <q-input dense outlined   label="fono"  v-model="formal.fono"/>
+            </div>
+            <div class="col-6">
+              <q-input dense outlined   label="domicilio"  v-model="formal.domicilio"/>
+            </div>
+            <div class="col-3">
+              <q-select disable dense outlined label="Mercado" :options="formmerc" v-model="formal.formmerc" />
+            </div>
+            <div class="col-2">
+              <q-input dense outlined :disable="true"  label="gest"  v-model="formal.gest"/>
+            </div>
+            <div class="col-3">
+              <q-select disable  dense outlined label="Actividad" :options="form_acti" v-model="formal.form_acti" />
+            </div>
+            <div class="col-2">
+              <q-select disable dense outlined label="Puesto" :options="form_pue" v-model="formal.form_pue" />
+            </div>
+            <div class="col-2">
+              <q-select disable  dense outlined label="Venta de" :options="activida" v-model="formal.activida" />
+            </div>
+            <div class="col-2">
+              <q-input disable  dense outlined label="Largo"  v-model="formal.largo" />
+            </div>
+            <div class="col-2">
+              <q-input disable  dense outlined label="Ancho"  v-model="formal.ancho" />
+            </div>
+            <div class="col-12" v-if="formal.gest!=undefined">
+              <q-badge v-if="disablebtn" color="negative" class="text-h5" label="No se puede actualizar hasta que  este al dia los pagos"/>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-
+        ">
+          <q-btn  label="Guardar" :disable="disablebtn" color="positive" icon="add_circle" type="submit" />
+          <q-btn  label="cancelar" color="negative" icon="delete" v-close-popup />
+        </q-card-actions>
+      </q-form>
+    </q-card>
+  </q-dialog>
+
+
+  <q-dialog full-width v-model="dialogbajaeventual">
+    <q-card >
+      <q-form @submit.prevent="bajaeventual">
+        <q-card-section>
+          <div class="text-h6">Dar de baja eventual</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <div class="row">
+            <div class="col-6">
+              <q-select dense outlined label="eventual" use-input :options="eventuales" @filter="filterFnf2" v-model="eventual" />
+            </div>
+            <div class="col-2">
+              <q-input dense outlined :disable="true" label="pad ant" v-model="eventual.padant"/>
+            </div>
+            <div class="col-2">
+              <q-input required dense outlined label="FORM 23" v-model="form23" />
+            </div>
+            <div class="col-2">
+              <q-input required dense outlined label="COMPROBANTE" v-model="compr" />
+            </div>
+            <div class="col-2">
+              <q-input dense outlined  label="paterno"  v-model="eventual.paterno"/>
+            </div>
+            <div class="col-2">
+              <q-input dense outlined  label="materno"  v-model="eventual.materno"/>
+            </div>
+            <div class="col-3">
+              <q-input dense outlined  label="nombres"  v-model="eventual.nombres"/>
+            </div>
+            <div class="col-2">
+              <q-input dense outlined  label="ap_esposo"  v-model="eventual.ap_esposo"/>
+            </div>
+            <div class="col-3">
+              <q-input dense outlined  label="carnet"  v-model="eventual.carnet"/>
+            </div>
+            <div class="col-6">
+              <q-input dense outlined  label="fono"  v-model="eventual.fono"/>
+            </div>
+            <div class="col-6">
+              <q-input dense outlined  label="domicilio"  v-model="eventual.domicilio"/>
+            </div>
+            <div class="col-4">
+              <q-input dense outlined :disable="true"  label="ubicacion"  v-model="eventual.ubicacion"/>
+            </div>
+            <div class="col-4">
+              <q-select disable dense outlined label="Actividad" :options="even_acti" v-model="eventual.even_acti" />
+            </div>
+            <!--            <div class="col-12">-->
+            <!--              <pre>{{even_acti}}</pre>-->
+            <!--            </div>-->
+            <div class="col-4">
+              <q-input dense outlined :disable="true"  label="gest"  v-model="eventual.gest"/>
+            </div>
+            <div class="col-4">
+              <q-select disable dense outlined label="Dias" :options="even_dias" v-model="eventual.even_dias" />
+              <!--              <pre>{{eventual.even_dias}}</pre>-->
+            </div>
+            <div class="col-2">
+              <q-select disable dense outlined label="Puesto" :options="form_pue" v-model="eventual.form_pue" />
+            </div>
+            <!--            <div class="col-2">-->
+            <!--              <q-select  dense outlined label="Venta de" :options="activida" v-model="eventual.activida" />-->
+            <!--            </div>-->
+            <div class="col-2">
+              <q-input disable dense outlined label="Largo"  v-model="eventual.largo" />
+            </div>
+            <div class="col-2">
+              <q-input disable dense outlined label="Ancho"  v-model="eventual.ancho" />
+            </div>
+            <div class="col-12">
+              <!--              <pre>{{eventual.gest}}</pre>-->
+            </div>
+            <div class="col-12" v-if="eventual.gest!=undefined">
+              <q-badge v-if="disablebtne" color="negative" class="text-h5" label="No se puede dar de baja hasta que  este al dia los pagos"/>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn  label="Dar de Baja" :disable="disablebtne" color="red-6" icon="person_remove" type="submit" />
+          <q-btn  label="cancelar" color="negative" icon="delete" v-close-popup />
+        </q-card-actions>
+      </q-form>
+    </q-card>
+  </q-dialog>
+
+
   <q-dialog full-width v-model="dialogdireccione">
     <q-card >
       <q-form @submit.prevent="updateeventualesdireccion">
@@ -744,6 +911,7 @@ export default {
       dialogactividade:false,
       dialogdimensione:false,
       dialognombree:false,
+      dialogbajaeventual:false,
       dialodiae:false,
       form23:'',
       compr:'',
@@ -1157,6 +1325,26 @@ export default {
           color:'green',
           icon:'check',
           message:'Cambiado de nombre correctamente!'
+        })
+      })
+    },
+
+    bajaeventual(){
+      this.$q.loading.show()
+      this.eventual.form23=this.form23
+      this.eventual.compr=this.compr
+      // this.eventual.pad2=this.eventual.form_acti.codigo
+      // this.eventual.codigo=this.eventual.activida.codigo_ac
+      this.$api.post('even_baja',this.eventual).then(res=>{
+        // console.log(res.data)
+        this.dialogbajaeventual=false
+        this.form23=''
+        this.compr=''
+        this.datosformales()
+        this.$q.notify({
+          color:'green',
+          icon:'check',
+          message:'Se dio de baja correctamente!'
         })
       })
     },

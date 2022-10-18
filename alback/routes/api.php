@@ -30,6 +30,8 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/even_acti',\App\Http\Controllers\Even_actiController::class);
     Route::resource('/even_dias',\App\Http\Controllers\Even_diasController::class);
     Route::resource('/even_cambios',\App\Http\Controllers\Even_cambiosController::class);
+    Route::post('/even_baja',[\App\Http\Controllers\Even_cambiosController::class,'bajaeventual']);
+    Route::post('/form_baja',[\App\Http\Controllers\Even_cambiosController::class,'bajaformal']);
     Route::resource('/form_pue',\App\Http\Controllers\Form_pueController::class);
     Route::resource('/form_cambios',\App\Http\Controllers\Form_cambiosController::class);
     Route::resource('/lidgic',\App\Http\Controllers\Lidgic::class);
