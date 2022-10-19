@@ -621,13 +621,13 @@
               <q-input disable  dense outlined label="Ancho"  v-model="formal.ancho" />
             </div>
             <div class="col-12" v-if="formal.gest!=undefined">
-              <q-badge v-if="disablebtn" color="negative" class="text-h5" label="No se puede actualizar hasta que  este al dia los pagos"/>
+              <q-badge v-if="disablebtn" color="negative" class="text-h5" label="No se puede dar de baja hasta que  este al dia con los pagos"/>
             </div>
           </div>
         </q-card-section>
         <q-card-actions align="right" class="bg-white text-
         ">
-          <q-btn  label="Guardar" :disable="disablebtn" color="positive" icon="add_circle" type="submit" />
+          <q-btn  label="Dar de Baja" :disable="disablebtn" color="red-6" icon="person_remove" type="submit" />
           <q-btn  label="cancelar" color="negative" icon="delete" v-close-popup />
         </q-card-actions>
       </q-form>
@@ -912,6 +912,7 @@ export default {
       dialogdimensione:false,
       dialognombree:false,
       dialogbajaeventual:false,
+      dialogbajaformal:false,
       dialodiae:false,
       form23:'',
       compr:'',
@@ -1338,6 +1339,23 @@ export default {
       this.$api.post('even_baja',this.eventual).then(res=>{
         // console.log(res.data)
         this.dialogbajaeventual=false
+        this.form23=''
+        this.compr=''
+        this.datosformales()
+        this.$q.notify({
+          color:'green',
+          icon:'check',
+          message:'Se dio de baja correctamente!'
+        })
+      })
+    },
+    bajaformal(){
+      this.$q.loading.show()
+      this.formal.form23=this.form23
+      this.formal.compr=this.compr
+      this.$api.post('formal_baja',this.formal).then(res=>{
+        // console.log(res.data)
+        this.dialogbajaformal=false
         this.form23=''
         this.compr=''
         this.datosformales()

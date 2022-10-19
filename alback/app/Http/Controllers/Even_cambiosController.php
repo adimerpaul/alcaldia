@@ -138,46 +138,7 @@ class Even_cambiosController extends Controller
         ]);
 
     }
-    public function bajaformal(Request $request){
 
-        DB::connection('merc20xx')->table('formales')
-            ->where("id", $request->id)
-            ->update([
-                "hab" => 1
-            ]);
-
-        DB::connection('merc20xx')->table('even_bajas')->insert([
-            "form23" => $request->form23 == null ? '' : $request->form23,
-            "pad1" => $request->pad1 == null ? '' : $request->pad1,
-            "pad2" => $request->pad2 == null ? '' : $request->pad2,
-            "pad3" => $request->pad3 == null ? '' : $request->pad3,
-            "paterno" => $request->paterno == null ? '' : $request->paterno,
-            "materno" => $request->materno == null ? '' : $request->materno,
-            "ap_esposo" => $request->ap_esposo == null ? '' : $request->ap_esposo,
-            "nombres" => $request->nombres == null ? '' : $request->nombres,
-            "carnet" => $request->carnet == null ? '' : $request->carnet,
-            "fono" => $request->fono == null ? '' : $request->fono,
-            "domicilio" => $request->domicilio == null ? '' : $request->domicilio,
-            "ruc" => $request->ruc == null ? '' : $request->ruc,
-            "oper" => $request->user()->username,
-            "fecha" => now(),
-            "hora" => now(),
-            "fecha_inic" => $request->fecha_inic == null ? '' : $request->fecha_inic,
-            "gest" => $request->gest == null ? '' : $request->gest,
-            "codigo" => $request->codigo == null ? '' : $request->codigo,
-            "tipo_pues" => $request->tipo_pues == null ? '' : $request->tipo_pues,
-            "ubicacion" => $request->ubicacion == null ? '' : $request->ubicacion,
-            "ancho" => $request->ancho == null ? '' : $request->ancho,
-            "largo" => $request->largo == null ? '' : $request->largo,
-            "observ" => $request->observ == null ? '' : $request->observ,
-            "padron" => $request->padron == null ? '' : $request->padron,
-            "padant" => $request->padant == null ? '' : $request->padant,
-            "dias" => $request->dias == null ? '' : $request->dias,
-            "compr" => $request->compr == null ? '' : $request->compr,
-
-        ]);
-
-    }
 
     /**
      * Display the specified resource.
