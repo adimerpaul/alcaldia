@@ -104,7 +104,8 @@ class Form_cambiosController extends Controller
            "hab"=>1
         ]);
         DB::connection('merc20xx')->table('form_bajas')->insert([
-            "form23"=>$request->form23==null?'':$request->form23,
+            "form23"=>$request->form23==null?0:$request->form23,
+            "resoladm"=>$request->resoladm==null?'':$request->resoladm,
             "pad1"=>$request->pad1==null?'':$request->pad1,
             "pad2"=>$request->pad2==null?'':$request->pad2,
             "pad3"=>$request->pad3==null?'':$request->pad3,

@@ -563,18 +563,29 @@
       <q-form @submit.prevent="bajaformal">
         <q-card-section>
           <div class="text-h6">Dar de baja a formal</div>
+
         </q-card-section>
         <q-card-section class="q-pt-none">
           <div class="row">
+            <div class="col-12">
+              <q-checkbox class="fit row wrap justify-end items-start content-start" v-model="resoladmformalcheck" label="Baja por Resolución administrativa" />
+            </div>
             <div class="col-6">
               <q-select dense outlined label="formal" use-input :options="formales" @filter="filterFnf" v-model="formal" />
             </div>
             <div class="col-2">
               <q-input dense outlined :disable="true" label="pad ant" v-model="formal.padant"/>
             </div>
-            <div class="col-2">
-              <q-input required dense outlined label="FORM 23" v-model="form23" />
-            </div>
+            <template v-if="resoladmformalcheck">
+              <div class="col-2">
+                <q-input required dense outlined color="teal-9" label="Resolución administrativa" v-model="resoladmformal" />
+              </div>
+            </template>
+            <template v-else>
+              <div class="col-2">
+                <q-input required dense outlined label="FORM 23" v-model="form23" />
+              </div>
+            </template>
             <div class="col-2">
               <q-input required dense outlined label="COMPROBANTE" v-model="compr" />
             </div>
@@ -643,15 +654,25 @@
         </q-card-section>
         <q-card-section class="q-pt-none">
           <div class="row">
+            <div class="col-12">
+              <q-checkbox class="fit row wrap justify-end items-start content-start" v-model="resoladmeventualcheck" label="Baja por Resolución administrativa" />
+            </div>
             <div class="col-6">
               <q-select dense outlined label="eventual" use-input :options="eventuales" @filter="filterFnf2" v-model="eventual" />
             </div>
             <div class="col-2">
               <q-input dense outlined :disable="true" label="pad ant" v-model="eventual.padant"/>
             </div>
-            <div class="col-2">
-              <q-input required dense outlined label="FORM 23" v-model="form23" />
-            </div>
+            <template v-if="resoladmeventualcheck">
+              <div class="col-2">
+                <q-input required dense outlined color="teal-9" label="Resolución administrativa" v-model="resoladmeventual" />
+              </div>
+            </template>
+            <template v-else>
+              <div class="col-2">
+                <q-input required dense outlined label="FORM 23" v-model="form23" />
+              </div>
+            </template>
             <div class="col-2">
               <q-input required dense outlined label="COMPROBANTE" v-model="compr" />
             </div>
@@ -929,6 +950,10 @@ export default {
       even_dias:[],
       form_pue:[],
       miscambiostotales:[],
+      resoladmformalcheck:false,
+      resoladmeventualcheck:false,
+      resoladmformal:"",
+      resoladmeventual:"",
     }
   },
   created(){
@@ -1332,6 +1357,7 @@ export default {
 
     bajaeventual(){
       this.$q.loading.show()
+      this.eventual.resoladm=this.resoladmeventual
       this.eventual.form23=this.form23
       this.eventual.compr=this.compr
       // this.eventual.pad2=this.eventual.form_acti.codigo
@@ -1341,6 +1367,7 @@ export default {
         this.dialogbajaeventual=false
         this.form23=''
         this.compr=''
+        this.resoladmeventual=''
         this.datosformales()
         this.$q.notify({
           color:'green',
@@ -1351,6 +1378,7 @@ export default {
     },
     bajaformal(){
       this.$q.loading.show()
+      this.formal.resoladm=this.resoladmformal
       this.formal.form23=this.form23
       this.formal.compr=this.compr
       this.$api.post('formal_baja',this.formal).then(res=>{
@@ -1358,6 +1386,7 @@ export default {
         this.dialogbajaformal=false
         this.form23=''
         this.compr=''
+        this.resoladmformal=''
         this.datosformales()
         this.$q.notify({
           color:'green',
@@ -1442,15 +1471,18 @@ export default {
   computed:{
     disablebtn(){
       // console.log(this.formal.gest)
-      if (parseInt(this.formal.gest)==2021){
+      let year = new Date().getFullYear();
+
+      if (parseInt(this.formal.gest)==year-1){
         return false
       }else {
         return true
       }
     },
     disablebtne(){
+      let year = new Date().getFullYear();
       // console.log(this.formal.gest)
-      if (parseInt(this.eventual.gest)==2021){
+      if (parseInt(this.eventual.gest)==year-1){
         return false
       }else {
         return true
