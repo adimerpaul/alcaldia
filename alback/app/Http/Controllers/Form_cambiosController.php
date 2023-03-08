@@ -126,7 +126,7 @@ class Form_cambiosController extends Controller
             "observ"=>$request->observ==null?'':$request->observ,
             "padron"=>$request->padron==null?'':$request->padron,
             "padant"=>$request->padant==null?'':$request->padant,
-            "compr"=>$request->compr==null?'':$request->compr,
+            "compr"=>$request->compr==null?0:$request->compr,
             "oper"=>$request->user()->username,
             "fecha"=>now(),
             "hora"=>now(),

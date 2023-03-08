@@ -577,7 +577,7 @@
               <q-input dense outlined :disable="true" label="pad ant" v-model="formal.padant"/>
             </div>
             <template v-if="resoladmformalcheck">
-              <div class="col-2">
+              <div class="col-4">
                 <q-input required dense outlined color="teal-9" label="Resolución administrativa" v-model="resoladmformal" />
               </div>
             </template>
@@ -585,10 +585,11 @@
               <div class="col-2">
                 <q-input required dense outlined label="FORM 23" v-model="form23" />
               </div>
-            </template>
-            <div class="col-2">
+              <div class="col-2">
               <q-input required dense outlined label="COMPROBANTE" v-model="compr" />
-            </div>
+              </div>
+            </template>
+
             <div class="col-2">
               <q-input dense outlined   label="paterno"  v-model="formal.paterno"/>
             </div>
@@ -664,7 +665,7 @@
               <q-input dense outlined :disable="true" label="pad ant" v-model="eventual.padant"/>
             </div>
             <template v-if="resoladmeventualcheck">
-              <div class="col-2">
+              <div class="col-4">
                 <q-input required dense outlined color="teal-9" label="Resolución administrativa" v-model="resoladmeventual" />
               </div>
             </template>
@@ -672,10 +673,11 @@
               <div class="col-2">
                 <q-input required dense outlined label="FORM 23" v-model="form23" />
               </div>
-            </template>
-            <div class="col-2">
+              <div class="col-2">
               <q-input required dense outlined label="COMPROBANTE" v-model="compr" />
-            </div>
+              </div>
+            </template>
+
             <div class="col-2">
               <q-input dense outlined  label="paterno"  v-model="eventual.paterno"/>
             </div>

@@ -134,7 +134,7 @@ class Even_cambiosController extends Controller
             "padron" => $request->padron == null ? '' : $request->padron,
             "padant" => $request->padant == null ? '' : $request->padant,
             "dias" => $request->dias == null ? '' : $request->dias,
-            "compr" => $request->compr == null ? '' : $request->compr,
+            "compr" => $request->compr == null ? 0 : $request->compr,
 
         ]);
 
