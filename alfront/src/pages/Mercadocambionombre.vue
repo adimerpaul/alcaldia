@@ -12,7 +12,25 @@
             <div class=" col-3 flex flex-center"><q-btn @click="dialogactividad=true" color="primary" icon="local_activity"  label="Cambio actividad" /></div>
             <div class=" col-3 flex flex-center"><q-btn @click="dialogdimension=true" color="secondary" icon="lens_blur"  label="Cambio dimension" /></div>
             <div class=" col-3 flex flex-center"><q-btn @click="dialognombre=true" color="info" icon="drive_file_rename_outline"  label="Cambio nombre" /></div>
-            <div class=" col-2 flex flex-center"><q-btn @click="dialogbajaformal=true" color="negative" icon="person_remove"  label="DAR DE BAJA" /></div>
+            <div class=" col-2 flex flex-center">
+              <q-btn-dropdown auto-close color="negative" icon="person_remove" label="DAR DE BAJA" split @click="dialogbajaformal=true">
+                <!-- dropdown content goes here -->
+                <q-list padding style="width: 250px">
+                  <q-item-label header>Por Resolución administrativa</q-item-label>
+                    <q-item clickable @click="reportebajaformalresoladmformal">
+                      <q-item-section avatar>
+                        <q-avatar icon="assignment" color="teal" text-color="white" />
+                      </q-item-section>
+                    <q-item-section>
+                      <q-item-label>REPORTE BAJA</q-item-label>
+                      <q-item-label caption>Por resolución administrativa</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                  <q-separator inset />
+                </q-list>
+              </q-btn-dropdown>
+            </div>
+
             <div class=" col-3 flex flex-center"><q-btn  color="accent" icon="construction"  label="consultar tramite" /></div>
           </div>
         </q-card-actions>
@@ -40,7 +58,24 @@
             <div class=" col-2 flex flex-center"><q-btn @click="dialogdireccione=true" color="accent" icon="home"  label="Cambio direccion" /></div>
             <div class=" col-2 flex flex-center"><q-btn @click="dialogdimensione=true" color="secondary" icon="lens_blur"  label="Cambio dimension" /></div>
             <div class=" col-2 flex flex-center"><q-btn @click="dialognombree=true" color="info" icon="drive_file_rename_outline"  label="Cambio nombre" /></div>
-            <div class=" col-2 flex flex-center"><q-btn @click="dialogbajaeventual=true" color="negative" icon="person_remove"  label="DAR DE BAJA" /></div>
+            <div class=" col-2 flex flex-center">
+              <q-btn-dropdown auto-close color="negative" icon="person_remove" label="DAR DE BAJA" split @click="dialogbajaeventual=true">
+                <!-- dropdown content goes here -->
+                <q-list padding style="width: 250px">
+                  <q-item-label header>Por Resolución administrativa</q-item-label>
+                    <q-item clickable @click="reportebajaformalresoladmeventual">
+                      <q-item-section avatar>
+                        <q-avatar icon="assignment" color="teal" text-color="white" />
+                      </q-item-section>
+                    <q-item-section>
+                      <q-item-label>REPORTE BAJA</q-item-label>
+                      <q-item-label caption>Por resolución administrativa</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                  <q-separator inset />
+                </q-list>
+              </q-btn-dropdown>
+            </div>
             <div class=" col-2 flex flex-center"><q-btn @click="dialodiae=true" color="primary" icon="edit"  label="Cambio de dia" /></div>
             <div class=" col-2 flex flex-center"><q-btn  color="accent" icon="construction"  label="consultar tramite" /></div>
           </div>
@@ -647,6 +682,112 @@
   </q-dialog>
 
 
+  <q-dialog v-model="dialogreportebajaformal">
+    <q-card >
+        <q-card-section>
+          <div class="text-h6">REPORTE BAJAS POR RESOLUCIÓN ADMINISTRATIVA</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-table
+      title="FORMALES"
+      :rows="bajasresoladmformal"
+      :columns="columns"
+      :filter="filterbajaformal"
+      row-key="nombre"
+    >
+    <template v-slot:top-right>
+        <q-input borderless dense debounce="300" v-model="filterbajaformal" placeholder="Buscar por padron">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
+      <template v-slot:body="props">
+        <q-tr :props="props">
+          <q-td key="padron" :props="props">
+            {{  `${props.row.pad1}-${props.row.pad2}-${props.row.pad3}` }}
+          </q-td>
+          <q-td key="nombre" :props="props">
+            {{ `${props.row.nombres} ${props.row.paterno} ${props.row.materno}` }}
+          </q-td>
+          <q-td>
+            <q-btn
+                        dense
+                        round
+                        flat
+                        color="blue"
+                        @click="impresionreportebajaresoladm(props)"
+                        icon="print"
+                      >
+            </q-btn>
+          </q-td>
+        </q-tr>
+
+      </template>
+
+    </q-table>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white">
+          <q-btn  label="Cerrar" color="negative" icon="delete" v-close-popup />
+        </q-card-actions>
+    </q-card>
+  </q-dialog>
+
+
+  <q-dialog v-model="dialogreportebajaeventual">
+    <q-card >
+        <q-card-section>
+          <div class="text-h6">REPORTE BAJAS POR RESOLUCIÓN ADMINISTRATIVA</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-table
+      title="EVENTUALES"
+      :rows="bajasresoladmeventual"
+      :columns="columns"
+      :filter="filterbajaeventual"
+      row-key="nombre"
+    >
+    <template v-slot:top-right>
+        <q-input borderless dense debounce="300" v-model="filterbajaeventual" placeholder="Buscar por padron">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
+      <template v-slot:body="props">
+        <q-tr :props="props">
+          <q-td key="padron" :props="props">
+            {{  `${props.row.pad1}-${props.row.pad2}-${props.row.pad3}` }}
+          </q-td>
+          <q-td key="nombre" :props="props">
+            {{ `${props.row.nombres} ${props.row.paterno} ${props.row.materno}` }}
+          </q-td>
+          <q-td>
+            <q-btn
+                        dense
+                        round
+                        flat
+                        color="blue"
+                        @click="impresionreportebajaresoladm(props)"
+                        icon="print"
+                      >
+            </q-btn>
+          </q-td>
+        </q-tr>
+
+      </template>
+
+    </q-table>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white">
+          <q-btn  label="Cerrar" color="negative" icon="delete" v-close-popup />
+        </q-card-actions>
+    </q-card>
+  </q-dialog>
+
+
+
+
   <q-dialog full-width v-model="dialogbajaeventual">
     <q-card >
       <q-form @submit.prevent="bajaeventual">
@@ -937,6 +1078,8 @@ export default {
       dialogbajaeventual:false,
       dialogbajaformal:false,
       dialodiae:false,
+      dialogreportebajaformal:false,
+      dialogreportebajaeventual:false,
       form23:'',
       compr:'',
       eventuales:[],
@@ -956,6 +1099,15 @@ export default {
       resoladmeventualcheck:false,
       resoladmformal:"",
       resoladmeventual:"",
+      bajasresoladmformal:[],
+      bajasresoladmeventual:[],
+      columns: [
+        {name: "padron", align: "left", label: "Padron", field: "padron", sortable: true,},
+        {name: "nombre", align: "left", label: "Nombre", field: "nombre", sortable: true,},
+        { name: 'opcion', label: 'Opcion', field:'action',  sortable: false },
+      ],
+      filterbajaformal:'',
+      filterbajaeventual:'',
     }
   },
   created(){
@@ -1109,6 +1261,39 @@ export default {
         // console.log(res.data)
         this.$q.loading.hide()
       })
+    },
+    impresionreportebajaresoladm(data){
+      console.log(data.row)
+      this.$q.loading.show()
+        function header(){
+          var img = new Image()
+          img.src = 'logo.jpg'
+          doc.addImage(img, 'jpg', 0.5, 0.5, 2, 2)
+          doc.setFont(undefined,'bold')
+          doc.setFontSize(16);
+          doc.text(5, 2, 'BAJA POR RESOLUCIÓN ADMINISTRATIVA')
+        }
+        var doc = new jsPDF('p','cm','letter')
+        doc.setFont("courier");
+        header()
+        doc.setFontSize(12);
+        doc.text(2, 4, 'FECHA DE BAJA: ')
+        doc.text(2, 4.5, 'CONTRIBUYENTE: ')
+        doc.text(2, 5, 'PADRON: ')
+        doc.text(2, 5.5, 'DADO DE BAJA POR: ')
+        doc.text(2, 6, 'RESOLUCIÓN ADMIN.: ')
+        doc.setFont(undefined,'normal');
+        doc.text(7, 4, data.row.fecha)
+        doc.text(7, 4.5, data.row.nombres +' '+ data.row.paterno + ' ' + data.row.materno)
+        doc.text(7, 5, data.row.pad1+'-'+data.row.pad2+'-'+data.row.pad3)
+        doc.text(7, 5.5, data.row.fullnameoper)
+        let line =  doc.splitTextToSize( data.row.resoladm, 12)
+        doc.text(7, 6, line)
+
+        // doc.text(8, 11, '........................... ')
+        // doc.text(9, 11.5, 'FIRMA ')
+        window.open(doc.output('bloburl'), '_blank');
+        this.$q.loading.hide()
     },
     datosformales(){
       this.$q.loading.show()
@@ -1395,6 +1580,26 @@ export default {
           icon:'check',
           message:'Se dio de baja correctamente!'
         })
+      })
+    },
+    reportebajaformalresoladmformal(){
+      this.$q.loading.show()
+      this.$api.get('reporte_formal_baja_resoladm').then(res=>{
+         console.log(res.data)
+         this.dialogreportebajaformal=true
+        this.bajasresoladmformal = res.data
+        this.$q.loading.hide()
+
+      })
+    },
+    reportebajaformalresoladmeventual(){
+      this.$q.loading.show()
+      this.$api.get('reporte_eventual_baja_resoladm').then(res=>{
+         console.log(res.data)
+         this.dialogreportebajaeventual=true
+        this.bajasresoladmeventual = res.data
+        this.$q.loading.hide()
+
       })
     },
     updateformalesdimension(){

@@ -58,7 +58,7 @@
             <q-input disable dense outlined label="Numero preimpreso"  v-model="formal.n_pretuc" />
           </div>
           <div class="col-4 flex flex-center">
-            <q-btn label="Habilitar targeta" :disable="disablebtn" :color="disablebtn?'negative':'positive'" class="full-width"  icon="credit_score" @click="habilitartargeta()" />
+            <q-btn label="Habilitar tarjeta" :disable="disablebtn" :color="disablebtn?'negative':'positive'" class="full-width"  icon="credit_score" @click="habilitartargeta()" />
           </div>
 <!--          <div class="col-12">-->
 <!--            <pre>{{formal}}</pre>-->
@@ -142,7 +142,7 @@
               <q-input disable dense outlined label="Numero preimpreso"  v-model="eventual.n_pretuc" />
             </div>
             <div class="col-4 flex flex-center">
-              <q-btn label="Habilitar targeta" :disable="disablebtne" :color="disablebtne?'negative':'positive'" class="full-width"  icon="credit_score" @click="habilitartargetae()" />
+              <q-btn label="Habilitar tarjeta" :disable="disablebtne" :color="disablebtne?'negative':'positive'" class="full-width"  icon="credit_score" @click="habilitartargetae()" />
             </div>
           </div>
         </q-card-section>
@@ -409,16 +409,18 @@ export default {
     },
   },computed:{
     disablebtn(){
+      let year = new Date().getFullYear();
       // console.log(this.formal.gest)
-      if (parseInt(this.formal.gest)==2020){
+      if (parseInt(this.formal.gest)>=year-2){
         return false
       }else {
         return true
       }
     },
     disablebtne(){
+      let year = new Date().getFullYear();
       // console.log(this.formal.gest)
-      if (parseInt(this.eventual.gest)==2020){
+      if (parseInt(this.eventual.gest)>=year-2){
         return false
       }else {
         return true

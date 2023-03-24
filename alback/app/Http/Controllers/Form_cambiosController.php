@@ -128,10 +128,17 @@ class Form_cambiosController extends Controller
             "padant"=>$request->padant==null?'':$request->padant,
             "compr"=>$request->compr==null?0:$request->compr,
             "oper"=>$request->user()->username,
+            "fullnameoper"=>$request->user()->name,
             "fecha"=>now(),
             "hora"=>now(),
         ]);
 
+    }
+
+    public function getlistbajasporresolucionformal(){
+        return DB::connection('merc20xx')->table('form_bajas')
+        ->whereNotNull("resoladm")
+        ->get();
     }
 
     /**

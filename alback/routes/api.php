@@ -32,6 +32,8 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::resource('/even_cambios',\App\Http\Controllers\Even_cambiosController::class);
     Route::post('/even_baja',[\App\Http\Controllers\Even_cambiosController::class,'bajaeventual']);
     Route::post('/formal_baja',[\App\Http\Controllers\Form_cambiosController::class,'bajaformal']);
+    Route::get('/reporte_formal_baja_resoladm',[\App\Http\Controllers\Form_cambiosController::class,'getlistbajasporresolucionformal']);
+    Route::get('/reporte_eventual_baja_resoladm',[\App\Http\Controllers\Even_cambiosController::class,'getlistbajasporresolucioneventual']);
     Route::resource('/form_pue',\App\Http\Controllers\Form_pueController::class);
     Route::resource('/form_cambios',\App\Http\Controllers\Form_cambiosController::class);
     Route::resource('/lidgic',\App\Http\Controllers\Lidgic::class);

@@ -135,6 +135,7 @@ class Even_cambiosController extends Controller
             "padant" => $request->padant == null ? '' : $request->padant,
             "dias" => $request->dias == null ? '' : $request->dias,
             "compr" => $request->compr == null ? 0 : $request->compr,
+            "fullnameoper"=>$request->user()->name,
 
         ]);
 
@@ -187,5 +188,11 @@ class Even_cambiosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getlistbajasporresolucioneventual(){
+        return DB::connection('merc20xx')->table('even_bajas')
+        ->whereNotNull("resoladm")
+        ->get();
     }
 }
